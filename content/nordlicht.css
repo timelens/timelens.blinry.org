@@ -3,6 +3,7 @@
 }
 .timebar {
     position: relative;
+    margin-bottom: 200px;
 }
 .timebar img {
     width: 100%;
@@ -19,27 +20,31 @@ iframe {
 .timebar .marker {
     width: 0px;
     height: 0px;
-    border-top: 11px solid black;
+    border-bottom: 11px solid black;
     border-left: 11px solid transparent;
     border-right: 11px solid transparent;
-    margin-top: -101px;
+    /*margin-top: -101px;*/
     /*position: absolute;
     top: 0;
     left: 0;*/
+    /*visibility: hidden;*/
 }
 
 .thumbnail {
-    border: solid black 5px;
+    border: solid white 5px;
     border-radius: 5px;
+    box-shadow: 0 0 7px black;
     width: 160px;
     height: 90px;
-    margin-top: -111px;
+    margin-top: -211px;
+    z-index: 0;
+    transition: opacity 0.1s ease-in-out;
 }
 
 .thumbnail {
-    visibility: hidden;
+    opacity: 0;
 }
 
 .timebar img:hover + .marker + .thumbnail {
-    visibility: visible;
+    opacity: 1;
 }

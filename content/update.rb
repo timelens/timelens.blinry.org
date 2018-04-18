@@ -13,6 +13,6 @@ IO.read("index.md").scan(/youtube\("([^"]+?)"\)/) do |match|
     if not File.exist?("timebars/#{vid}.jpg") or not File.exist?("thumbnails/#{vid}.jpg")
         puts "Either timebar or thumbnail file not found."
         print "Running nordlicht... "
-        system("~/wip/nordlicht/rust/target/release/nordlicht /home/seb/permanent/homepage/content/timebars/#{file} --timeline timebars/#{vid}.jpg --thumbnails thumbnails/#{vid}.jpg -w 1000 -h 90")
+        system("~/wip/nordlicht/rust/target/release/nordlicht /home/seb/wip/nordlicht/demo/content/#{file} --timeline timebars/#{vid}.jpg --thumbnails thumbnails/#{vid}.jpg -w 1000 -h 90")
     end
 end

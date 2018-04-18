@@ -62,7 +62,7 @@ function initIframe(iframe) {
             player.seekTo(x, true);
         }
 
-        marker.get(0).style.marginLeft = (x-11)+"px";
+        //marker.get(0).style.marginLeft = (x-11)+"px";
 
         //var i = Math.round(player.getCurrentTime()/player.getDuration()*THUMB_COUNT);
         var n = Math.round(x/bar.width()*THUMB_COUNT);
@@ -96,15 +96,13 @@ function initIframe(iframe) {
     //thumbnaildiv.append(thumbnail.get(0));
 
     setInterval(function(){
-        if (!bar.data("mouseover")) {
-            marker.get(0).style.marginLeft = (player.getCurrentTime()/player.getDuration()*bar.width()-11)+"px";
+        marker.get(0).style.marginLeft = (player.getCurrentTime()/player.getDuration()*bar.width()-11)+"px";
 
-            var n = Math.round(player.getCurrentTime()/player.getDuration()*THUMB_COUNT);
-            var tx = n % THUMB_COLUMNS;
-            var ty = Math.floor(n/THUMB_COLUMNS);
-            thumbnaildiv.css("background-position", (-tx*THUMB_WIDTH)+"px "+(-ty*THUMB_HEIGHT)+"px");
-            thumbnaildiv.get(0).style.marginLeft = (player.getCurrentTime()/player.getDuration()*bar.width()-THUMB_WIDTH/2)+"px";
-        }
+        //var n = Math.round(player.getCurrentTime()/player.getDuration()*THUMB_COUNT);
+        //var tx = n % THUMB_COLUMNS;
+        //var ty = Math.floor(n/THUMB_COLUMNS);
+        //thumbnaildiv.css("background-position", (-tx*THUMB_WIDTH)+"px "+(-ty*THUMB_HEIGHT)+"px");
+        //thumbnaildiv.get(0).style.marginLeft = (player.getCurrentTime()/player.getDuration()*bar.width()-THUMB_WIDTH/2)+"px";
     }, 1/30);
 }
 
