@@ -6,8 +6,6 @@ title: nordlicht demo
 <script src="nordlicht.js"></script>
 <link href="nordlicht.css" rel="stylesheet">
 
-# nordlicht web prototype
-
 
 ## Blender short movies
 

@@ -26,6 +26,7 @@ function initIframe(iframe) {
     iframe.after(timebardiv.get(0))
     timebardiv.attr("class", "timebar");
     timebardiv.attr("style", "width: "+width+"px");
+    timebardiv.attr("draggable", "false");
 
     var bar = $(document.createElement("img"));
     bar.attr("src", "timebars/"+vid+style+".jpg");
@@ -69,10 +70,11 @@ function initIframe(iframe) {
         var tx = n % THUMB_COLUMNS;
         var ty = Math.floor(n/THUMB_COLUMNS);
         thumbnaildiv.css("background-position", (-tx*THUMB_WIDTH)+"px "+(-ty*THUMB_HEIGHT)+"px");
-        thumbnaildiv.get(0).style.marginLeft = Math.min(Math.max(11,(x-THUMB_WIDTH/2-5)),1000-160-11)+"px";
+        thumbnaildiv.get(0).style.marginLeft = Math.min(Math.max(11,(x-THUMB_WIDTH/2-5)),1000-160-5-14)+"px";
     });
 
     var marker = $(document.createElement("div"));
+    marker.attr("draggable", "false");
     marker.attr("class", "marker");
     timebardiv.append(marker.get(0));
 
@@ -90,6 +92,7 @@ function initIframe(iframe) {
     marker.after(thumbnaildiv.get(0));
     thumbnaildiv.attr("class", "thumbnail");
     thumbnaildiv.css("background", "url(thumbnails/"+vid+style+".jpg), url(loading.png)");
+    thumbnaildiv.attr("draggable", "false");
 
     //var thumbnail = $(document.createElement("img"));
     //thumbnail.attr("src", "thumbnails/"+vid+style+".jpg");
