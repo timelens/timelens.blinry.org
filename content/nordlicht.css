@@ -33,15 +33,11 @@ iframe {
 .thumbnail {
     border: solid white 5px;
     border-radius: 5px;
-    box-shadow: 0 0 7px black;
+    box-shadow: 0 0 0 blue, 0 0 7px black;
     width: 160px;
     height: 90px;
     margin-top: -211px;
-    z-index: 0;
     transition: opacity 0.1s ease-in-out;
-}
-
-.thumbnail {
     opacity: 0;
 }
 

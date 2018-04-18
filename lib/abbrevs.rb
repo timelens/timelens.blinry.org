@@ -12,7 +12,7 @@ end
 
 def youtube id, classes: nil, start: nil
 <<HERE
-<iframe #{classes ? "class=\"#{classes}\"" : ""} width="1000" height="562"
+<iframe #{classes ? "class=\"#{classes}\"" : ""} width="1000" height="561"
 src="https://www.youtube.com/embed/#{id}?#{start ? "start=#{start}&" : ""}rel=0" frameborder="0" allowfullscreen>
 </iframe>
 HERE

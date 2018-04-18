@@ -69,7 +69,7 @@ function initIframe(iframe) {
         var tx = n % THUMB_COLUMNS;
         var ty = Math.floor(n/THUMB_COLUMNS);
         thumbnaildiv.css("background-position", (-tx*THUMB_WIDTH)+"px "+(-ty*THUMB_HEIGHT)+"px");
-        thumbnaildiv.get(0).style.marginLeft = (x-THUMB_WIDTH/2)+"px";
+        thumbnaildiv.get(0).style.marginLeft = Math.min(Math.max(11,(x-THUMB_WIDTH/2-5)),1000-160-11)+"px";
     });
 
     var marker = $(document.createElement("div"));
@@ -89,7 +89,7 @@ function initIframe(iframe) {
     var thumbnaildiv = $(document.createElement("div"));
     marker.after(thumbnaildiv.get(0));
     thumbnaildiv.attr("class", "thumbnail");
-    thumbnaildiv.css("background", "url(thumbnails/"+vid+style+".jpg");
+    thumbnaildiv.css("background", "url(thumbnails/"+vid+style+".jpg), url(loading.png)");
 
     //var thumbnail = $(document.createElement("img"));
     //thumbnail.attr("src", "thumbnails/"+vid+style+".jpg");

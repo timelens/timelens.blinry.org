@@ -61,6 +61,10 @@ end
 #    write item.identifier + "-titlepage.svg-thumbnail.png"
 #end
 
+route "/videos/*" do
+    nil
+end
+
 passthrough "/**/*"
 
 layout "/**/*", :slim
