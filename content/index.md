@@ -3,9 +3,10 @@ title: nordlicht demo
 ---
 
 <script src="jquery-3.2.1.min.js"></script>
-<script src="nordlicht.js"></script>
-<link href="nordlicht.css" rel="stylesheet">
 
+<script src="nordlicht.js"></script>
+
+<link href="nordlicht.css" rel="stylesheet">
 
 ## Blender short movies
 
@@ -28,4 +29,3 @@ title: nordlicht demo
 <%= youtube("9ytwNUMdbcE") %> <!-- Witness trailer -->
 <%= youtube("cmSbXsFE3l8") %> <!-- Cup song -->
 <%= youtube("L0MK7qz13bU") %> <!-- Let it go -->
-
