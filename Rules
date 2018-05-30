@@ -46,7 +46,7 @@ end
 compile "/**/*.slim" do
     filter :slim
     layout "/default.*"
-    filter :tidy
+    #filter :tidy
     write item.identifier.without_ext + ".html"
 end
 

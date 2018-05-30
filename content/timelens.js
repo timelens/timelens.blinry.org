@@ -1,4 +1,3 @@
-WIDTH = 500;
 THUMB_WIDTH = 160;
 THUMB_HEIGHT = 90;
 THUMB_COUNT = 1000;
@@ -8,7 +7,7 @@ function initIframe(iframe) {
   var style = "";
   var klass = iframe.attr("class");
   if (klass) {
-    //        style = klass.match(/nordlicht(-\w+)/)[1];
+    //        style = klass.match(/timelens(-\w+)/)[1];
   }
 
   iframe.attr(
@@ -32,16 +31,30 @@ function initIframe(iframe) {
   var vid = url.match(regExp)[1];
   iframe.attr("id", vid + style);
 
-  var timebardiv = $(document.createElement("div"));
-  iframe.parent().after(timebardiv.get(0));
-  timebardiv.attr("class", "timebar");
-  timebardiv.attr("style", "width: " + width + "px");
-  timebardiv.attr("draggable", "false");
+  var timelens = $(document.createElement("div"));
+  iframe.parent().after(timelens.get(0));
+  timelens.attr("class", "timelens");
+  timelens.attr("draggable", "false");
+
+  var thumbnail = $(document.createElement("div"));
+  timelens.append(thumbnail.get(0));
+  thumbnail.attr("class", "thumbnail");
+  thumbnail.css(
+    "background",
+    "url(thumbnails/" + vid + style + ".jpg), url(loading.png)"
+  );
+  thumbnail.attr("draggable", "false");
 
   var bar = $(document.createElement("img"));
-  bar.attr("src", "timebars/" + vid + style + ".jpg");
+  bar.attr("src", "timelines/" + vid + style + ".jpg");
   bar.attr("draggable", "false");
-  timebardiv.append(bar.get(0));
+  timelens.append(bar.get(0));
+
+  var marker = $(document.createElement("div"));
+  marker.attr("draggable", "false");
+  marker.attr("class", "marker");
+  timelens.append(marker.get(0));
+
   bar.click(function(event) {
     x = event.offsetX ? event.offsetX : event.pageX - bar.offsetLeft;
     x = x / bar.width() * player.getDuration();
@@ -58,10 +71,12 @@ function initIframe(iframe) {
 
   bar.mouseover(function(event) {
     bar.data("mouseover", true);
+    thumbnail.show(100);
   });
 
   bar.mouseout(function(event) {
     bar.data("mouseover", false);
+    thumbnail.hide(100);
   });
 
   bar.mousemove(function(event) {
@@ -79,19 +94,14 @@ function initIframe(iframe) {
     var n = Math.round(x / bar.width() * THUMB_COUNT);
     var tx = n % THUMB_COLUMNS;
     var ty = Math.floor(n / THUMB_COLUMNS);
-    thumbnaildiv.css(
+    thumbnail.css(
       "background-position",
       -tx * THUMB_WIDTH + "px " + -ty * THUMB_HEIGHT + "px"
     );
-    thumbnaildiv.get(0).style.marginLeft =
+    thumbnail.get(0).style.marginLeft =
       Math.min(Math.max(11, x - THUMB_WIDTH / 2 - 5), 1000 - 160 - 5 - 14) +
       "px";
   });
-
-  var marker = $(document.createElement("div"));
-  marker.attr("draggable", "false");
-  marker.attr("class", "marker");
-  timebardiv.append(marker.get(0));
 
   var player = new YT.Player(vid + style, {
     playerVars: { controls: 0, modestbranding: 1, rel: 0, iv_load_policy: 3 },
@@ -102,18 +112,9 @@ function initIframe(iframe) {
     }
   });
 
-  var thumbnaildiv = $(document.createElement("div"));
-  marker.after(thumbnaildiv.get(0));
-  thumbnaildiv.attr("class", "thumbnail");
-  thumbnaildiv.css(
-    "background",
-    "url(thumbnails/" + vid + style + ".jpg), url(loading.png)"
-  );
-  thumbnaildiv.attr("draggable", "false");
-
   //var thumbnail = $(document.createElement("img"));
   //thumbnail.attr("src", "thumbnails/"+vid+style+".jpg");
-  //thumbnaildiv.append(thumbnail.get(0));
+  //thumbnail.append(thumbnail.get(0));
 
   setInterval(function() {
     marker.get(0).style.marginLeft =
@@ -122,8 +123,8 @@ function initIframe(iframe) {
     //var n = Math.round(player.getCurrentTime()/player.getDuration()*THUMB_COUNT);
     //var tx = n % THUMB_COLUMNS;
     //var ty = Math.floor(n/THUMB_COLUMNS);
-    //thumbnaildiv.css("background-position", (-tx*THUMB_WIDTH)+"px "+(-ty*THUMB_HEIGHT)+"px");
-    //thumbnaildiv.get(0).style.marginLeft = (player.getCurrentTime()/player.getDuration()*bar.width()-THUMB_WIDTH/2)+"px";
+    //thumbnail.css("background-position", (-tx*THUMB_WIDTH)+"px "+(-ty*THUMB_HEIGHT)+"px");
+    //thumbnail.get(0).style.marginLeft = (player.getCurrentTime()/player.getDuration()*bar.width()-THUMB_WIDTH/2)+"px";
   }, 1 / 30);
 }
 
@@ -133,14 +134,14 @@ function initIframe(iframe) {
 //    playerdiv.id = "player-"+vid;
 //    div.append(playerdiv);
 //
-//    var timebardiv = document.createElement("div");
-//    div.append(timebardiv);
-//    $(timebardiv).attr("class", "timebar");
-//    $(timebardiv).attr("style", "width: "+WIDTH+"px");
+//    var timelens = document.createElement("div");
+//    div.append(timelens);
+//    $(timelens).attr("class", "timelens");
+//    $(timelens).attr("style", "width: "+WIDTH+"px");
 //
 //    var bar = document.createElement("img");
-//    $(bar).attr("src", "timebars/"+vid+".jpg");
-//    timebardiv.append(bar);
+//    $(bar).attr("src", "timelines/"+vid+".jpg");
+//    timelens.append(bar);
 //    $(bar).click(function(event) {
 //        x = event.offsetX?(event.offsetX):event.pageX-bar.offsetLeft;
 //        x = x/WIDTH*player.getDuration();
@@ -148,7 +149,7 @@ function initIframe(iframe) {
 //    });
 //
 //    var marker = document.createElement("div");
-//    timebardiv.append(marker);
+//    timelens.append(marker);
 //
 //    var player = new YT.Player("player-"+vid, {
 //        width: ""+WIDTH,
@@ -177,7 +178,7 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 function onYouTubeIframeAPIReady() {
   $("iframe")
-    .not(".nordlicht-none")
+    .not(".timelens-none")
     .each(function() {
       initIframe($(this));
     });

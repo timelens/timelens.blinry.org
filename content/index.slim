@@ -3,38 +3,66 @@ title: Timelens
 ---
 
 .jumbotron
-    h1.display-4 Timelens
-    p.lead Reinventing video navigation.
+    h1.display-4.text-center Timelens
+    p.lead.text-center Reinventing video navigation.
     p Timelens is a Free and Open Source software project enabling <strong>efficient, precise, active video navigation</strong>. Here's a demo, try clicking around in the <em>visual timeline</em> below the video:
 
     .embed-responsive.embed-responsive-16by9
         iframe.embed-responsive-item src="https://www.youtube.com/embed/lqiN98z6Dak?rel=0"
 
-    p Visual timelines show you the <em>structure of the video</em> at a glance. You can see the intro, the credits, and even if there's a "secret scene" after the credits! In a recorded talk, you can see <em>when the slides change</em>, you can <em>differentiate sections</em> and see <em>where the Q&A begins</em>.
+    p.mt-3 Visual timelines show you the <em>structure of the video</em> at a glance. You can see the intro, the credits, and even if there's a "secret scene" after the credits! In a recorded talk, you can see <em>when the slides change</em>, you can <em>differentiate sections</em> and see <em>where the Q&A begins</em>.
 
-    p Over the next months, we will build an <strong>efficient command line tool</strong> for generating visual timelines and thumbnail sheets, an <strong>easy-to-use JavaScript library</strong> for extending HTML5 players with these interface elements, and <strong>really good documentation</strong> for both. We will also integrate Timelens into <strong>media.ccc.de</strong>, the video archive of the Chaos Computer Club.
+h2 Future plans
 
-    p So, uh, wanna keep in touch? :) We'll send you updates and news about the project:
+p Until November 2018, we will build:
 
-    form
-        .form-row
-            .col-auto
-                input.form-control placeholder="Your email address"
-            .col-auto
-                button.btn.btn-primary type="submit" Subscribe to our mailing list
-            /.col-auto
-                a.btn.btn-outline-secondary href="https://twitter.com/timelens_io" Follow us on Twitter
+ul.fa-ul
+    li
+        span.fa-li
+            i.fas.fa-terminal
+        | an <strong>efficient command line tool</strong> for generating visual timelines and video thumbnails
+    li
+        span.fa-li
+            i.fas.fa-puzzle-piece
+        | an <strong>easy-to-use JavaScript library</strong> for extending HTML5 players with these interface elements
+    li
+        span.fa-li
+            i.fas.fa-book
+        | and <strong>really good documentation</strong> for both!
 
-    p And read on to learn all about how this works.
+p We will also integrate Timelens into <strong>media.ccc.de</strong>, the video archive of the Chaos Computer Club.
 
-    p Thanks!<br>Sebastian
+h2 Stay in touch?
+
+p Subscribe to our mailing list to get occasional updates on the project:
+
+form.mb-3
+    .form-row
+        .col-auto
+            input.form-control placeholder="Your email address"
+        .col-auto
+            button.btn.btn-primary type="submit" Subscribe
+        /.col-auto
+
+p
+    | You can also follow us on Twitter:
+    a< href="https://twitter.com/timelens_io"
+        i class="fab fa-twitter fa-fw"
+        | timelens_io
+
+/h2 Who's behind this?
+
+/p Hey, I'm <a href="https://morr.cc">Sebastian Morr</a>! :) I'm a computer scientist, programmer, and digital artist. Timelens has been a long-going hobby project of mine, and now, supported by the Prototype Fund, I can spend a lot of time doing it really well!
 
 h2 Supporters
 
 .row
-    .col-sm
-        | BMBF
-    .col-sm
-        | Prototype Fund
-    .col-sm
-        | OKF
+    .col-auto
+        a href="https://www.bmbf.de"
+            img.logo.m-3 src="/assets/images/bmbf.svg"
+    .col-auto
+        a href="https://prototypefund.de"
+            img.logo.m-3 src="/assets/images/prototypefund.svg"
+    .col-auto
+        a href="https://okfn.de"
+            img.logo.m-3 src="/assets/images/okfde.svg"
