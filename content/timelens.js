@@ -77,12 +77,12 @@ function initIframe(iframe) {
 
   bar.mouseover(function(event) {
     bar.data("mouseover", true);
-    thumbnail.animate({opacity: 1, visibility: "visible"}, 100);
+    thumbnail.fadeIn(100);
   });
 
   bar.mouseout(function(event) {
     bar.data("mouseover", false);
-    thumbnail.animate({opacity: 0, visibility: "hidden"}, 100);
+    thumbnail.fadeOut(100);
   });
 
   bar.mousemove(function(event) {

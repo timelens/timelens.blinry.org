@@ -10,7 +10,7 @@
   height: 90px;
   position: absolute;
   top: -110px;
-  opacity: 0;
+  display: none;
 }
 
 .timelens img {
