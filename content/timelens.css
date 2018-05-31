@@ -8,8 +8,9 @@
   box-shadow: 0 0 0 blue, 0 0 7px black;
   width: 160px;
   height: 90px;
-  margin-top: -100px;
-  margin-bottom: 10px;
+  position: absolute;
+  top: -110px;
+  opacity: 0;
 }
 
 .timelens img {
@@ -30,4 +31,8 @@
   border-bottom: 11px solid black;
   border-left: 11px solid transparent;
   border-right: 11px solid transparent;
+}
+
+.timelens-hide-player {
+    display: none;
 }

@@ -5,9 +5,13 @@ THUMB_COLUMNS = 20;
 
 function initIframe(iframe) {
   var style = "";
+  var hidePlayer = false;
   var klass = iframe.attr("class");
   if (klass) {
     //        style = klass.match(/timelens(-\w+)/)[1];
+        if (klass.match(/timelens-hide-player/)) {
+            var hidePlayer = true;
+        }
   }
 
   iframe.attr(
@@ -32,7 +36,7 @@ function initIframe(iframe) {
   iframe.attr("id", vid + style);
 
   var timelens = $(document.createElement("div"));
-  iframe.parent().after(timelens.get(0));
+  iframe.after(timelens.get(0));
   timelens.attr("class", "timelens");
   timelens.attr("draggable", "false");
 
@@ -50,16 +54,18 @@ function initIframe(iframe) {
   bar.attr("draggable", "false");
   timelens.append(bar.get(0));
 
-  var marker = $(document.createElement("div"));
-  marker.attr("draggable", "false");
-  marker.attr("class", "marker");
-  timelens.append(marker.get(0));
+    if (!hidePlayer) {
+      var marker = $(document.createElement("div"));
+      marker.attr("draggable", "false");
+      marker.attr("class", "marker");
+      timelens.append(marker.get(0));
 
-  bar.click(function(event) {
-    x = event.offsetX ? event.offsetX : event.pageX - bar.offsetLeft;
-    x = x / bar.width() * player.getDuration();
-    player.seekTo(x, true);
-  });
+      bar.click(function(event) {
+        x = event.offsetX ? event.offsetX : event.pageX - bar.offsetLeft;
+        x = x / bar.width() * player.getDuration();
+        player.seekTo(x, true);
+      });
+    }
 
   bar.mousedown(function(event) {
     bar.data("mousedown", true);
@@ -71,22 +77,24 @@ function initIframe(iframe) {
 
   bar.mouseover(function(event) {
     bar.data("mouseover", true);
-    thumbnail.show(100);
+    thumbnail.animate({opacity: 1, visibility: "visible"}, 100);
   });
 
   bar.mouseout(function(event) {
     bar.data("mouseover", false);
-    thumbnail.hide(100);
+    thumbnail.animate({opacity: 0, visibility: "hidden"}, 100);
   });
 
   bar.mousemove(function(event) {
     x = event.offsetX ? event.offsetX : event.pageX - bar.offsetLeft;
 
-    if (bar.data("mousedown")) {
-      //bar.click(event);
-      x = x / bar.width() * player.getDuration();
-      player.seekTo(x, true);
-    }
+      if (!hidePlayer) {
+        if (bar.data("mousedown")) {
+          //bar.click(event);
+          x = x / bar.width() * player.getDuration();
+          player.seekTo(x, true);
+        }
+      }
 
     //marker.get(0).style.marginLeft = (x-11)+"px";
 

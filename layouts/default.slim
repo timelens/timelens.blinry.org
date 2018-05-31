@@ -1,56 +1,50 @@
 doctype html
-html lang="en"
-    head
-        meta charset="utf-8"
-        meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"
+html lang=lang_for(@item)
+  head
+    meta charset="utf-8"
+    title
+      - if @item.path != "/" and @item[:title]
+        = @item[:title]
+      - else
+        | Timelens
 
-        title
-            = @item[:title]
+    meta name="author" content="Sebastian Morr"
 
-        link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous"
-        link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous"
+    - if @item[:published]
+      meta name="date" content=@item[:published].strftime("%Y-%m-%d")
 
-        link rel="stylesheet" href="/assets/style.css"
-        link rel="stylesheet" href="/timelens.css"
-        script src="/jquery-3.2.1.min.js"
-        script src="/timelens.js"
-        /link rel="stylesheet" href="assets/style.css"
-        /link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700"
-        /link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Bree+Serif:400"
+    meta name="description" content=abstract_for(@item)
 
-    body
-        nav.navbar.navbar-dark.navbar-expand.bg-dark.fixed-top
-            a.navbar-brand href="/"
-                /img> src="/assets/images/avatar.png" width="30" height="30"
-                | Timelens
-            /button.navbar-toggler type="button" data-toggle="collapse" data-target="#navbarNav"
-                span.navbar-toggler-icon
-                    |
-            /.collapse.navbar-collapse#navbarNav
-            ul.navbar-nav
-                /- for item in [@items["/about.slim"]]
-                    li.nav-item
-                        a.nav-link href=item.path =item[:title]
-            ul.navbar-nav.flex-row.ml-md-auto
-                li.nav-item
-                    a.nav-link href="#"
-                        i class="fas fa-envelope"
-                li.nav-item
-                    a.nav-link href="https://twitter.com/timelens_io"
-                        i class="fab fa-twitter"
-                li.nav-item
-                    a.nav-link href="https://github.com/timelens"
-                        i class="fab fa-github"
-            /ul.navbar-nav.flex-row.ml-md-auto
-                li.nav-item
-                    a.nav-link href="https://github.com/timelens"
-                        img src="/assets/icons/github.svg" width="16" height="16"
-                li.nav-item
-                    a.nav-link href="https://twitter.com/timelens_io"
-                        img src="/assets/icons/twitter.svg" width="16" height="16"
-        .container
-            == yield
+    meta name="twitter:card" content="summary_large_image"
+    meta name="twitter:site" content="@ideainstruction"
+    meta name="twitter:title" content=@item[:title]
+    meta name="twitter:description" content=abstract_for(@item)
+    meta name="twitter:creator" content="@ideainstruction"
+    meta name="twitter:image" content=domain[0..-2]+thumbnail_for(@item)
 
-        script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"
-        script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"
-        script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"
+    meta property="og:title" content=@item[:title]
+    meta property="og:type" content="website"
+    meta property="og:url" content=domain[0..-2]+@item.path
+    meta property="og:image" content=domain[0..-2]+thumbnail_for(@item)
+    meta property="og:description" content=abstract_for(@item)
+
+    meta name="flattr:id" content="12e3r3"
+
+    - if @item[:noindex]
+      meta name="robots" content="noindex"
+
+    meta name="viewport" content="initial-scale=0.45"
+
+    link rel="shortcut icon" href="/assets/favicon.ico"
+    link rel="alternate" type="application/atom+xml" href="/feed.xml"
+
+    link rel="stylesheet" href="/assets/style.css"
+    link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,900"
+
+    link rel="stylesheet" href="/timelens.css"
+    script src="https://code.jquery.com/jquery-3.1.1.min.js"
+    script src="/timelens.js"
+
+  body
+    #content
+      == yield
