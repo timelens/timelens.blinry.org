@@ -1,6 +1,7 @@
 $spacing: 1.5em;
 $grey: #222;
-$lightgrey: #666;
+$blue: #57a3e8;
+$darkblue: #1763a8;
 
 * {
     margin: 0;
@@ -10,7 +11,7 @@ $lightgrey: #666;
 
 a {
     text-decoration: none;
-    color: #57a3e8;
+    color: $blue;
     transition: all 0.2s ease;
 }
 
@@ -26,79 +27,110 @@ body {
     font-family: "Open Sans", sans-serif;
     line-height: 1.6em;
     color: black;
+
+    font-size: 1.1em;
+    margin-top: $spacing;
+    margin-bottom: 5*$spacing;
+}
+
+img.logo {
+    width: 100%;
+    max-width: 20em;
+    margin: 0 auto;
+    display: block;
+    margin-bottom: $spacing;
+}
+
+p.lead {
+    text-align: center;
+    font-size: 1.5em;
+    line-height: 1.2em;
+}
+
+img.notes {
+    transform: scale(1.05, 1);
+    width: 100%;
+    margin-top: 5px;
+}
+
+img.avatar {
+    width: 8em;
+    float: left;
+    margin-right: $spacing;
+    margin-top: 0.6em;
+}
+
+p, ul {
+    margin-bottom: 1em;
+}
+
+li {
+    margin-left: 1em;
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-weight: 900;
 }
 
-#content {
-    font-size: 1.1em;
+h2 {
+    font-size: 1.5em;
+    margin-top: 2em;
+    margin-bottom: 0.5em;
+}
 
-    p, ul {
-        margin-bottom: 1em;
-    }
-
-    li {
-        margin-left: 1em;
-    }
-
-    h1 {
-        font-size: 4em;
-        font-weight: 900;
-        margin-bottom: 0.5em;
-        margin-top: 1.5em;
-        text-align: center;
-    }
-
-    h2 {
-        font-size: 1.5em;
-        margin-top: 2em;
-        margin-bottom: 0.5em;
-    }
-
-    p.lead {
-        text-align: center;
-        font-size: 1.5em;
-        line-height: 1.2em;
-    }
-
-    img {
-        width: 100%;
-    }
-
-    img.notes {
-        transform: scale(1.05, 1);
-    }
-
-    .timelens img {
-        border: 10px black solid;
-        border-radius: 10px;
-        /*height: 50px;*/
-    }
+.timelens img {
+    border: black solid;
+    border-width: 10px 0 10px 0;
+    border-radius: 10px;
 }
 
 #supporters {
-    margin-top: 2*$spacing;
-    margin-bottom: 5*$spacing;
+    margin-top: $spacing;
 
     a {
         display: inline-block;
-        height: 8em;
-        width: 20%;
-        margin-right: 2*$spacing;
+        margin-right: 3*$spacing;
+        margin-bottom: $spacing;
     }
+
     img {
-        max-width: 100%;
-        max-height: 100%;
+        height: 8em;
         display: inline-block;
-        margin: auto;
         vertical-align: middle;
         transition: all 0.2s ease;
-
     }
+
     a:hover img {
         transform: scale(1.1);
     }
+}
 
+button, input {
+    color: $blue;
+    background: transparent;
+    border: 2px solid $blue;
+    border-radius: 6px;
+    padding: 0.5em;
+    transition: all 0.2s ease;
+    margin-bottom: $spacing;
+}
+
+button:focus, input:focus {
+    outline: none;
+}
+
+input {
+    color: black;
+    border-color: #aaa;
+    margin-right: 0.5*$spacing;
+}
+ 
+button {
+    background-color: $blue;
+    color: white;
+}
+
+button:hover {
+    border-color: $darkblue;
+    background-color: $darkblue;
 }

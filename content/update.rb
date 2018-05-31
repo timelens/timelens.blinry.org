@@ -1,4 +1,4 @@
-IO.read("index.md").scan(/youtube\("([^"]+?)"\)/) do |match|
+IO.read("index.slim").scan(/youtube.com\/embed\/([^?]+?)\?/) do |match|
     vid = match[0]
 
     file = "videos/#{vid}.mp4"
@@ -10,9 +10,9 @@ IO.read("index.md").scan(/youtube\("([^"]+?)"\)/) do |match|
         system("youtube-dl -f 160 -o #{file} http://www.youtube.com/watch?v=#{vid}")
     end
 
-    if not File.exist?("timebars/#{vid}.jpg") or not File.exist?("thumbnails/#{vid}.jpg")
+    if not File.exist?("timelines/#{vid}.jpg") or not File.exist?("thumbnails/#{vid}.jpg")
         puts "Either timebar or thumbnail file not found."
         print "Running nordlicht... "
-        system("~/wip/nordlicht/rust/target/release/nordlicht /home/seb/wip/nordlicht/demo/content/#{file} --timeline timebars/#{vid}.jpg --thumbnails thumbnails/#{vid}.jpg -w 1000 -h 90")
+        system("~/wip/timelens/timelens/target/debug/timelens /home/seb/wip/timelens/homepage/content/#{file} --timeline timelines/#{vid}.jpg --thumbnails thumbnails/#{vid}.jpg -w 1000 -h 90")
     end
 end

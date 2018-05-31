@@ -124,6 +124,7 @@ function initIframe(iframe) {
   //thumbnail.attr("src", "thumbnails/"+vid+style+".jpg");
   //thumbnail.append(thumbnail.get(0));
 
+    if (!hidePlayer) {
   setInterval(function() {
     marker.get(0).style.marginLeft =
       player.getCurrentTime() / player.getDuration() * bar.width() - 11 + "px";
@@ -134,6 +135,7 @@ function initIframe(iframe) {
     //thumbnail.css("background-position", (-tx*THUMB_WIDTH)+"px "+(-ty*THUMB_HEIGHT)+"px");
     //thumbnail.get(0).style.marginLeft = (player.getCurrentTime()/player.getDuration()*bar.width()-THUMB_WIDTH/2)+"px";
   }, 1 / 30);
+    }
 }
 
 //function initPlayer(div) {
