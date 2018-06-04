@@ -50,7 +50,7 @@ function initStandalone(div) {
       -tx * THUMB_WIDTH + "px " + -ty * THUMB_HEIGHT + "px"
     );
     thumbnail.get(0).style.marginLeft =
-      Math.min(Math.max(11, x - THUMB_WIDTH / 2 - 5), 1000 - 160 - 5 - 14) +
+      x - THUMB_WIDTH / 2 - 5 +
       "px";
   });
 }
