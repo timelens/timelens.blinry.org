@@ -32,6 +32,8 @@ body {
     font-size: 1.1em;
     margin-top: $spacing;
     margin-bottom: 5*$spacing;
+
+    overflow-x: hidden;
 }
 
 img.logo {

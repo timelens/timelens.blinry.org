@@ -1,65 +1,25 @@
 #!/usr/bin/env ruby
 
-preprocess do
-    @items.each do |item|
-        if item[:published]
-            item[:published] = DateTime.parse(item[:published].to_s)
-        end
-        if item[:updated]
-            item[:updated] = DateTime.parse(item[:updated].to_s)
-        end
-        if item[:tags]
-            item[:tags] = item[:tags].split(",").map{|t| t.strip}
-        end
-    end
-end
-
 compile "/**/*.scss" do
     filter :sass, syntax: :scss
     write item.identifier.without_ext + ".css"
 end
-
-compile "/**/*.coffee" do
-    filter :coffeescript
-    write item.identifier.without_ext + ".js"
-end
-
-compile "/**/*.xml" do
-    filter :erb
-    write item.identifier.without_ext + ".html"
-end
-
-#compile "/**/*.{png,jpg,gif,svg}", :rep => :thumbnail do
-#    filter :thumbnailize, :width => 600
-#    write item.identifier + "-thumbnail.png"
-#end
 
 compile "/**/*.md" do
     filter :erb
     filter :absolutize_paths
     filter :kramdown
     layout "/default.*"
-    #filter :tidy
+    filter :tidy
     write item.identifier.without_ext + ".html"
 end
 
 compile "/**/*.slim" do
     filter :slim
     layout "/default.*"
-    #filter :tidy
+    filter :tidy
     write item.identifier.without_ext + ".html"
 end
-
-#compile "/**/*.pdf", :rep => :titlepage do
-#    filter :titlepageize
-#    write item.identifier + "-titlepage.svg"
-#end
-
-#compile "/**/*.pdf", :rep => :thumbnail do
-#    filter :titlepageize
-#    filter :thumbnailize, :width => 600
-#    write item.identifier + "-titlepage.svg-thumbnail.png"
-#end
 
 route "/videos/*" do
     nil

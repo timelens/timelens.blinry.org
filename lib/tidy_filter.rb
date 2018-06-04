@@ -4,8 +4,7 @@ class TidyFilter < Nanoc::Filter
     type :text
 
     def run(content, params={})
-        #`echo '#{content.gsub("'", "\'")}' | tidy`
-        Open3.popen3("tidy --quiet yes --indent auto --indent-spaces 4 --wrap 100 --tidy-mark no") do |stdin, stdout, stderr, wait_thr|
+        Open3.popen3("tidy --quiet yes --indent auto --indent-spaces 4 --wrap 100 --tidy-mark no --drop-empty-elements no") do |stdin, stdout, stderr, wait_thr|
             stdin.print content
             stdin.close
 
