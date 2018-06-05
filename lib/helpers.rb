@@ -63,7 +63,7 @@ def abstract_for item
 end
 
 def thumbnail_for item
-    ""
+    item.identifier.without_ext+".png"
 end
 
 def with_tag tag

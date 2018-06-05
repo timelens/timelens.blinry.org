@@ -16,7 +16,7 @@
    id="svg8"
    inkscape:version="0.92.2 2405546, 2018-03-11"
    sodipodi:docname="loading.svg"
-   inkscape:export-filename="/home/seb/wip/nordlicht/demo/content/loading.png"
+   inkscape:export-filename="loading.png"
    inkscape:export-xdpi="25.4"
    inkscape:export-ydpi="25.4">
   <defs
@@ -29,18 +29,19 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4"
-     inkscape:cx="247.80225"
-     inkscape:cy="221.05736"
+     inkscape:cx="-7.2399721"
+     inkscape:cy="380.8302"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:snap-page="true"
      borderlayer="true"
-     inkscape:window-width="1276"
-     inkscape:window-height="1369"
-     inkscape:window-x="1280"
-     inkscape:window-y="32"
-     inkscape:window-maximized="0" />
+     inkscape:window-width="1196"
+     inkscape:window-height="1529"
+     inkscape:window-x="6400"
+     inkscape:window-y="320"
+     inkscape:window-maximized="0"
+     inkscape:snap-global="false" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -67,14 +68,14 @@
        y="207" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;font-size:12.55117416px;line-height:100%;font-family:Montserrat;-inkscape-font-specification:'Montserrat Ultra-Bold';font-variant-ligatures:discretionary-ligatures historical-ligatures;font-variant-caps:normal;font-variant-numeric:lining-nums tabular-nums slashed-zero;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;opacity:1;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.26458332;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       x="53.516178"
-       y="255.36504"
+       style="font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;font-size:16.15402412px;line-height:100%;font-family:Montserrat;-inkscape-font-specification:'Montserrat Ultra-Bold';font-variant-ligatures:discretionary-ligatures historical-ligatures;font-variant-caps:normal;font-variant-numeric:lining-nums tabular-nums slashed-zero;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;opacity:1;fill:#282828;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.34053269;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       x="48.739758"
+       y="257.23209"
        id="text14"><tspan
          sodipodi:role="line"
          id="tspan12"
-         x="53.516178"
-         y="255.36504"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Bree Serif';-inkscape-font-specification:'Bree Serif';fill:#4d4d4d;stroke-width:0.26458332">Loading...</tspan></text>
+         x="48.739758"
+         y="257.23209"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:condensed;font-family:'Noto Sans';-inkscape-font-specification:'Noto Sans Medium Condensed';fill:#282828;fill-opacity:1;stroke-width:0.34053269">Loading...</tspan></text>
   </g>
 </svg>
