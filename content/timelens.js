@@ -1,5 +1,5 @@
 THUMB_WIDTH = 160;
-THUMB_HEIGHT = 100;
+THUMB_HEIGHT = 90;
 THUMB_COUNT = 1000;
 THUMB_COLUMNS = 20;
 
@@ -88,7 +88,7 @@ function initIframe(iframe) {
   iframe.attr("id", vid + style);
 
   var timelens = $(document.createElement("div"));
-  iframe.after(timelens.get(0));
+  iframe.parent().after(timelens.get(0));
   timelens.attr("class", "timelens");
   timelens.attr("draggable", "false");
 
@@ -159,7 +159,7 @@ function initIframe(iframe) {
       -tx * THUMB_WIDTH + "px " + -ty * THUMB_HEIGHT + "px"
     );
     thumbnail.get(0).style.marginLeft =
-      Math.min(Math.max(11, x - THUMB_WIDTH / 2 - 5), 1000 - 160 - 5 - 14) +
+      x - THUMB_WIDTH / 2 - 5 +
       "px";
   });
 

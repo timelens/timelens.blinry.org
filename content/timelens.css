@@ -1,3 +1,18 @@
+.frame {
+    position: relative;
+    padding-top: 56.25%;
+    margin-top: 3em;
+}
+
+iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
 .timelens {
   position: relative;
 }
@@ -11,6 +26,11 @@
   position: absolute;
   top: -110px;
   display: none;
+}
+
+.frame + .timelens img {
+  border: none;
+  border-radius: 0;
 }
 
 .timelens img {
@@ -30,8 +50,4 @@
   border-bottom: 11px solid black;
   border-left: 11px solid transparent;
   border-right: 11px solid transparent;
-}
-
-.timelens-hide-player {
-    display: none;
 }

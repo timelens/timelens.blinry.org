@@ -13,6 +13,6 @@ IO.read("index.slim").scan(/youtube.com\/embed\/([^?]+?)\?/) do |match|
     if not File.exist?("timelines/#{vid}.jpg") or not File.exist?("thumbnails/#{vid}.jpg")
         puts "Either timebar or thumbnail file not found."
         print "Running nordlicht... "
-        system("~/wip/timelens/timelens/target/debug/timelens /home/seb/wip/timelens/homepage/content/#{file} --timeline timelines/#{vid}.jpg --thumbnails thumbnails/#{vid}.jpg -w 1000 -h 90")
+        system("~/wip/timelens/timelens/target/debug/timelens #{file} --timeline timelines/#{vid}.jpg --thumbnails thumbnails/#{vid}.jpg -w 1000 -h 90")
     end
 end
