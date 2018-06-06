@@ -165,7 +165,10 @@ function initTimelens2(element, vtt) {
         thumbnail.css("height", active_thumbnail.h);
 
         // move thumbnail div to the correct position
-        thumbnail.get(0).style.marginLeft = x - active_thumbnail.w / 2 - 5 + "px";
+        thumbnail.get(0).style.marginLeft = Math.min(
+            Math.max(10, x - active_thumbnail.w / 2 - 5),
+            timeline.width() - active_thumbnail.w - 20
+        ) + "px";
     });
 
     if (mode == "youtube") {
