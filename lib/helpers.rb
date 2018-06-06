@@ -73,7 +73,7 @@ def with_tag tag
 end
 
 def domain
-    "https://morr.cc/"
+    "https://timelens.io/"
 end
 
 def box(items)
