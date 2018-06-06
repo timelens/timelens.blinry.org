@@ -1,11 +1,71 @@
-THUMB_WIDTH = 160;
-THUMB_HEIGHT = 90;
-THUMB_COUNT = 1000;
-THUMB_COLUMNS = 20;
+function from_timestamp(timestamp) {
+    let matches = timestamp.match(/(.*):(.*)\.(.*)/);
+    let minutes = parseInt(matches[1]);
+    let seconds = parseInt(matches[2]);
+    let mseconds = parseInt(matches[3]);
+
+    let mseconds_total = mseconds + 1000*(seconds + 60*minutes);
+
+    return mseconds_total;
+}
 
 function initStandalone(div) {
   var style = "";
-  var vid = div.data("id")
+  var vid = div.data("id");
+
+  let vtt_url = "http://localhost:3000/thumbnails/" + vid + ".vtt";
+
+    var request = new XMLHttpRequest();
+    request.open('GET', vtt_url, true);
+    request.send(null);
+    request.onreadystatechange = function () {
+        if (request.readyState === 4 && request.status === 200) {
+            var type = request.getResponseHeader('Content-Type');
+            if (type.indexOf("text") !== 1) {
+                initStandalone2(div, request.responseText);
+            }
+        }
+    }
+}
+
+function parseVTT(vtt) {
+    let from = 0;
+    let to = 0;
+    let file = "";
+    let x = 0;
+    let y = 0;
+    let w = 0;
+    let h = 0;
+
+    let thumbnails = [];
+
+    for (let line of vtt.split("\n")) {
+        var timings = /-->/;
+        var payload = /jpg/;
+        if (timings.test(line)) {
+            var matches = line.match(/(.*) --> (.*)/);
+            from = from_timestamp(matches[1]);
+            to = from_timestamp(matches[2]);
+        } else if (payload.test(line)) {
+            var matches = line.match(/(.*)\?xywh=(.*),(.*),(.*),(.*)/);
+            file = matches[1];
+            x = matches[2];
+            y = matches[3];
+            w = matches[4];
+            h = matches[5];
+
+            thumbnails.push({from: from, to: to, file: file, x: x, y: y, w: w, h: h});
+        }
+    }
+    return thumbnails;
+}
+
+function initStandalone2(div, vtt) {
+  var style = "";
+  var vid = div.data("id");
+  var duration = from_timestamp(div.data("duration"));
+
+  var thumbnails = parseVTT(vtt);
 
   var timelens = $(document.createElement("div"));
   div.after(timelens.get(0));
@@ -15,10 +75,6 @@ function initStandalone(div) {
   var thumbnail = $(document.createElement("div"));
   timelens.append(thumbnail.get(0));
   thumbnail.attr("class", "thumbnail");
-  thumbnail.css(
-    "background",
-    "url(thumbnails/" + vid + style + ".jpg), url(loading.png)"
-  );
   thumbnail.attr("draggable", "false");
 
   var bar = $(document.createElement("img"));
@@ -42,20 +98,72 @@ function initStandalone(div) {
     //marker.get(0).style.marginLeft = (x-11)+"px";
 
     //var i = Math.round(player.getCurrentTime()/player.getDuration()*THUMB_COUNT);
-    var n = Math.round(x / bar.width() * THUMB_COUNT);
-    var tx = n % THUMB_COLUMNS;
-    var ty = Math.floor(n / THUMB_COLUMNS);
+
+    let mseconds = (x/bar.width())*duration;
+
+    let mt = null;
+    for (let t of thumbnails) {
+        if (mseconds >= t.from && mseconds <= t.to) {
+            mt = t;
+            break
+        }
+    }
+
     thumbnail.css(
       "background-position",
-      -tx * THUMB_WIDTH + "px " + -ty * THUMB_HEIGHT + "px"
+      -mt.x + "px " + -mt.y + "px"
     );
+  thumbnail.css(
+    "background-image",
+    "url(thumbnails/"+mt.file+"), url(loading.png)"
+  );
+      thumbnail.css("width", mt.w);
+      thumbnail.css("height", mt.h);
     thumbnail.get(0).style.marginLeft =
-      x - THUMB_WIDTH / 2 - 5 +
+      x - mt.w / 2 - 5 +
       "px";
   });
 }
 
 function initIframe(iframe) {
+  var vid = iframe
+    .attr("src")
+    .split("/")
+    .pop();
+  var url = iframe.attr("src");
+  var regExp = /.*(?:youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=)([^#\&\?]*).*/;
+  var vid = url.match(regExp)[1];
+
+
+
+
+  let vtt_url = "http://localhost:3000/thumbnails/" + vid + ".vtt";
+
+    var request = new XMLHttpRequest();
+    request.open('GET', vtt_url, true);
+    request.send(null);
+    request.onreadystatechange = function () {
+        if (request.readyState === 4 && request.status === 200) {
+            var type = request.getResponseHeader('Content-Type');
+            if (type.indexOf("text") !== 1) {
+                initIframe2(iframe, request.responseText);
+            }
+        }
+    }
+}
+
+
+function initIframe2(iframe, vtt) {
+  var thumbnails = parseVTT(vtt);
+
+  var vid = iframe
+    .attr("src")
+    .split("/")
+    .pop();
+  var url = iframe.attr("src");
+  var regExp = /.*(?:youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=)([^#\&\?]*).*/;
+  var vid = url.match(regExp)[1];
+
   var style = "";
   var hidePlayer = false;
   var klass = iframe.attr("class");
@@ -78,13 +186,6 @@ function initIframe(iframe) {
 
   var width = iframe.attr("width");
 
-  var vid = iframe
-    .attr("src")
-    .split("/")
-    .pop();
-  var url = iframe.attr("src");
-  var regExp = /.*(?:youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=)([^#\&\?]*).*/;
-  var vid = url.match(regExp)[1];
   iframe.attr("id", vid + style);
 
   var timelens = $(document.createElement("div"));
@@ -95,10 +196,10 @@ function initIframe(iframe) {
   var thumbnail = $(document.createElement("div"));
   timelens.append(thumbnail.get(0));
   thumbnail.attr("class", "thumbnail");
-  thumbnail.css(
+  /*thumbnail.css(
     "background",
     "url(thumbnails/" + vid + style + ".jpg), url(loading.png)"
-  );
+  );*/
   thumbnail.attr("draggable", "false");
 
   var bar = $(document.createElement("img"));
@@ -148,18 +249,29 @@ function initIframe(iframe) {
         }
       }
 
-    //marker.get(0).style.marginLeft = (x-11)+"px";
+    var duration = player.getDuration();
+    let mseconds = (x/bar.width())*duration*1000;
 
-    //var i = Math.round(player.getCurrentTime()/player.getDuration()*THUMB_COUNT);
-    var n = Math.round(x / bar.width() * THUMB_COUNT);
-    var tx = n % THUMB_COLUMNS;
-    var ty = Math.floor(n / THUMB_COLUMNS);
+    let mt = null;
+    for (let t of thumbnails) {
+        if (mseconds >= t.from && mseconds <= t.to) {
+            mt = t;
+            break
+        }
+    }
+
     thumbnail.css(
       "background-position",
-      -tx * THUMB_WIDTH + "px " + -ty * THUMB_HEIGHT + "px"
+      -mt.x + "px " + -mt.y + "px"
     );
+  thumbnail.css(
+    "background-image",
+    "url(thumbnails/"+mt.file+"), url(loading.png)"
+  );
+      thumbnail.css("width", mt.w);
+      thumbnail.css("height", mt.h);
     thumbnail.get(0).style.marginLeft =
-      x - THUMB_WIDTH / 2 - 5 +
+      x - mt.w / 2 - 5 +
       "px";
   });
 

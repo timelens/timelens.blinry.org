@@ -21,8 +21,8 @@ iframe {
   border: solid white 5px;
   border-radius: 5px;
   box-shadow: 0 0 0 blue, 0 0 7px black;
-  width: 160px;
-  height: 90px;
+  width: 0px;
+  height: 0px;
   position: absolute;
   top: -110px;
   display: none;
