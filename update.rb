@@ -1,15 +1,17 @@
 def timelens vid, file
-    if not File.exist?("timelines/#{vid}.jpg") or not File.exist?("thumbnails/#{vid}.jpg") or not File.exist?("thumbnails/#{vid}.vtt")
+    timeline_file = "content/timelines/#{vid}.jpg"
+    vtt_file = "content/thumbnails/#{vid}.vtt"
+    if not File.exist?(timeline_file) or not File.exist?(vtt_file)
         puts "One of the required files not found."
         print "Running timelens... "
-        system("timelens #{file} --timeline timelines/#{vid}.jpg --thumbnails thumbnails/#{vid}.jpg --vtt thumbnails/#{vid}.vtt -w 1000 -h 90 --seek")
+        system("timelens #{file} -w 1000 -h 90 --timeline #{timeline_file} --thumbnails #{vtt_file}")
     end
 end
 
 puts "Processing nemo..."
 timelens("nemo", "'/home/seb/library/movies/Finding Nemo/re up finding nemo.avi'")
 
-IO.read("index.slim").scan(/youtube.com\/embed\/([^?]+?)\?/) do |match|
+IO.read("content/index.slim").scan(/youtube.com\/embed\/([^"]+?)"/) do |match|
     vid = match[0]
 
     file = "videos/#{vid}.mp4"
