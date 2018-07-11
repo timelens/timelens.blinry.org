@@ -7,7 +7,6 @@ end
 
 compile "/**/*.md" do
     filter :erb
-    filter :absolutize_paths
     filter :kramdown
     layout "/default.*"
     filter :tidy

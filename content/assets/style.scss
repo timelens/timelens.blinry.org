@@ -60,7 +60,7 @@ img.avatar {
     margin-top: 0.6em;
 }
 
-p, ul {
+p, ul, pre {
     margin-bottom: 1em;
 }
 
@@ -99,6 +99,10 @@ h2 {
     }
 }
 
+img {
+    max-width: 100%;
+}
+
 button, input {
     color: $blue;
     background: transparent;
@@ -107,6 +111,7 @@ button, input {
     padding: 0.5em;
     transition: all 0.2s ease;
     margin-bottom: $spacing;
+    margin-right: 0.5 * $spacing;
 }
 
 button:focus, input:focus {
@@ -129,6 +134,58 @@ button:hover {
     border-color: $darkblue;
     background-color: $darkblue;
 }
+
+code {
+    font-size: 0.9em;
+}
+
+code, pre {
+    padding: 0.4em 0.6em;
+    background: #f6f8fa;
+}
+
+
+pre {
+    white-space: pre-wrap;
+}
+
+pre, pre code {
+    background: black;
+    color: white;
+    border-radius: 10px;
+}
+
+pre code {
+    padding: 0;
+    display: block;
+}
+
+.file {
+    position: relative;
+    margin-bottom: 1em;
+
+    span {
+        color: white;
+        background: rgba(0, 0, 0, 0.7);
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 0.7em;
+        padding: 0 0.5em;
+    }
+
+    pre, code {
+        color: black;
+        background: #f6f8fa;
+        border-radius: 0;
+    }
+}
+
+img {
+    display: block;
+}
+
+/* Timelens styles */
 
 .timelens-standalone img {
     border: black solid;

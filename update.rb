@@ -8,8 +8,10 @@ def timelens vid, file
     end
 end
 
+nemo = "'/home/seb/library/movies/Finding Nemo/re up finding nemo.avi'"
+
 puts "Processing nemo..."
-timelens("nemo", "'/home/seb/library/movies/Finding Nemo/re up finding nemo.avi'")
+timelens("nemo", nemo)
 
 IO.read("content/index.slim").scan(/youtube.com\/embed\/([^"]+?)"/) do |match|
     vid = match[0]
@@ -25,3 +27,9 @@ IO.read("content/index.slim").scan(/youtube.com\/embed\/([^"]+?)"/) do |match|
 
     timelens(vid, file)
 end
+
+puts "Running examples..."
+Dir.chdir("content/assets/examples")
+system("timelens #{nemo} --timeline video.mp4.timeline.jpg")
+system("timelens #{nemo} --timeline timeline.jpg -w 1000 -h 500")
+system("timelens #{nemo} --thumbnails thumbnails.vtt")
