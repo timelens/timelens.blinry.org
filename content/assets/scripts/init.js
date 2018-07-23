@@ -54,4 +54,10 @@ $(function() {
             duration: parseInt($(this).data("duration"))
         });
     });
+
+    $("video").mediaelementplayer({
+        features: ["playpause", "progress", "volume", "timelens"],
+        timeline: "/timelines/6558.jpg",
+        thumbnails: "/thumbnails/6558.vtt"
+    });
 });

@@ -13,9 +13,10 @@ nemo = "'/home/seb/library/movies/Finding Nemo/re up finding nemo.avi'"
 puts "Processing nemo..."
 timelens("nemo", nemo)
 
-IO.read("content/index.slim").scan(/youtube.com\/embed\/([^"]+?)"/) do |match|
-    vid = match[0]
+vids = IO.read("content/index.slim").scan(/youtube.com\/embed\/([^"]+?)"/).map { |match| match[0] }
+#vids << "7FeqF1-Z1g0"
 
+vids.each do |vid|
     file = "videos/#{vid}.mp4"
     puts "Processing #{vid}..."
 
@@ -27,6 +28,13 @@ IO.read("content/index.slim").scan(/youtube.com\/embed\/([^"]+?)"/) do |match|
 
     timelens(vid, file)
 end
+
+id = "6558"
+file = "videos/#{id}.mp4"
+if not File.exist?(file)
+    system("wget https://cdn.media.ccc.de/congress/2014/h264-sd/31c3-6558-de-en-Traue_keinem_Scan_den_du_nicht_selbst_gefaelscht_hast_sd.mp4 -O #{file}")
+end
+timelens(id, file)
 
 puts "Running examples..."
 Dir.chdir("content/assets/examples")
