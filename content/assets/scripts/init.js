@@ -55,9 +55,27 @@ $(function() {
         });
     });
 
-    $("video").mediaelementplayer({
+    $(".mediaelement").mediaelementplayer({
         features: ["playpause", "progress", "volume", "timelens"],
         timeline: "/timelines/6558.jpg",
         thumbnails: "/thumbnails/6558.vtt"
+    });
+
+    var player = new Clappr.Player({
+        source: "https://berlin-ak.ftp.media.ccc.de//congress/2014/webm-hd/31c3-6558-de-en-Traue_keinem_Scan_den_du_nicht_selbst_gefaelscht_hast_webm-hd.webm",
+        parentId: "#clappr",
+        poster: "https://static.media.ccc.de/media/congress/2014/6558-hd_preview.jpg",
+        plugins: {
+            core: [TimelensPlugin]
+        },
+        /*scrubThumbnails: {
+            backdropHeight: 64,
+            spotlightHeight: 84,
+            thumbs: ClapprTimelensPlugin.buildSpriteConfig("/thumbnails/6558-01.jpg", 1000, 161, 90, 10, 5)
+        },*/
+        timelens: {
+            timeline: "/timelines/6558.jpg",
+            thumbnails: "/thumbnails/6558.vtt"
+        }
     });
 });
