@@ -31,7 +31,7 @@ function onYouTubeIframeAPIReady() {
                     timelens.timelens({
                         timeline: "timelines/" + vid + ".jpg",
                         thumbnails: "thumbnails/" + vid + ".vtt",
-                        duration: player.getDuration(),
+                        duration: function() { return player.getDuration() },
                         position: function() {
                             return player.getCurrentTime();
                         },
@@ -48,17 +48,16 @@ function onYouTubeIframeAPIReady() {
 // Also, for all .timelens-standalone elements, initialize Timelens.
 $(function() {
     $(".timelens-standalone").each(function() {
+        let t = $(this);
         $(this).timelens({
             timeline: "timelines/" + $(this).data("id") + ".jpg",
             thumbnails: "thumbnails/" + $(this).data("id") + ".vtt",
-            duration: parseInt($(this).data("duration"))
+            duration: function() { return parseInt(t.data("duration")) }
         });
     });
 
     $(".mediaelement").mediaelementplayer({
-        features: ["playpause", "progress", "volume", "timelens"],
-        timeline: "/timelines/6558.jpg",
-        thumbnails: "/thumbnails/6558.vtt"
+        features: ["playpause", "progress", "volume", "timelens"]
     });
 
     var player = new Clappr.Player({
@@ -68,11 +67,6 @@ $(function() {
         plugins: {
             core: [TimelensPlugin]
         },
-        /*scrubThumbnails: {
-            backdropHeight: 64,
-            spotlightHeight: 84,
-            thumbs: ClapprTimelensPlugin.buildSpriteConfig("/thumbnails/6558-01.jpg", 1000, 161, 90, 10, 5)
-        },*/
         timelens: {
             timeline: "/timelines/6558.jpg",
             thumbnails: "/thumbnails/6558.vtt"
