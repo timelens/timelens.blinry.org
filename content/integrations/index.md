@@ -2,6 +2,21 @@
 title: Integrations
 ---
 
+## General-purpose JavaScript
+
+<div id="timelens"></div>
+
+Suppose you have a div with the id `timelens`, and you want it to hold the visual timeline of a video, and show thumbnails on mouseover. Use this JavaScript
+
+    $("#timelens").timelens({
+        timeline: "path/to/timeline.jpg",
+        thumbnails: "path/to/thumbnails.vtt"
+    });
+
+<script>
+$("#timelens").timelens({timeline: "/timelines/6558.jpg", thumbnails: "/thumbnails/6558.vtt"});
+</script>
+
 ## MediaElement.js
 
 <script src="/assets/mediaelement/mediaelement-and-player.min.js"></script>
@@ -9,7 +24,7 @@ title: Integrations
 <link rel="stylesheet" href="/assets/mediaelement/mediaelementplayer.min.css" />
 <script src="/assets/timelens-mediaelement.js"></script>
 
-<video class="mediaelement" data-id="2291" poster="https://static.media.ccc.de/media/congress/2014/6558-hd_preview.jpg" id="mejs_6321571297311233_html5" preload="none" src="https://cdn.media.ccc.de/congress/2014/webm-hd/31c3-6558-de-en-Traue_keinem_Scan_den_du_nicht_selbst_gefaelscht_hast_webm-hd.webm" preload="auto|metadata|none" style="width: 100%; height: 100%;" data-timeline="/timelines/6558.jpg">
+<video class="mediaelement" data-id="2291" poster="https://static.media.ccc.de/media/congress/2014/6558-hd_preview.jpg" id="mejs_6321571297311233_html5" src="https://cdn.media.ccc.de/congress/2014/webm-hd/31c3-6558-de-en-Traue_keinem_Scan_den_du_nicht_selbst_gefaelscht_hast_webm-hd.webm" preload="auto" style="width: 100%; height: 100%;" data-timeline="/timelines/6558.jpg">
 <source data-lang="eng" data-quality="high" src="https://berlin-ak.ftp.media.ccc.de//congress/2014/webm-hd/31c3-6558-de-en-Traue_keinem_Scan_den_du_nicht_selbst_gefaelscht_hast_webm-hd.webm" title="eng 1080p" type="video/webm">
 <source data-lang="eng" data-quality="high" src="https://berlin-ak.ftp.media.ccc.de//congress/2014/h264-hd-web/31c3-6558-de-Traue_keinem_Scan_den_du_nicht_selbst_gefaelscht_hast_hd.mp4" title="eng 1080p" type="video/mp4">
 <source data-lang="eng" data-quality="high" src="https://berlin-ak.ftp.media.ccc.de//congress/2014/h264-hd/31c3-6558-de-en-Traue_keinem_Scan_den_du_nicht_selbst_gefaelscht_hast_hd.mp4" title="eng 1080p" type="video/mp4">

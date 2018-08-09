@@ -25,10 +25,7 @@ Object.assign(MediaElementPlayer.prototype, {
         slider.style["margin-top"] = "-15px";
         $(slider).timelens({
             timeline: timeline,
-            thumbnails: thumbnails,
-            duration: function() {
-                return t.getDuration();
-            }
+            thumbnails: thumbnails
         });
     },
 

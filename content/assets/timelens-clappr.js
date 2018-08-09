@@ -21,14 +21,10 @@ class TimelensPlugin extends Clappr.UICorePlugin {
     }
 
     _init() {
-        var duration = this.core.mediaControl.container.getDuration();
         var bar = jQuery(".bar-background");
         bar.timelens({
             timeline: this.core.options.timelens.timeline,
-            thumbnails: this.core.options.timelens.thumbnails,
-            duration: function() {
-                return duration;
-            }
+            thumbnails: this.core.options.timelens.thumbnails
         });
         bar.css("height", "10px");
     }
