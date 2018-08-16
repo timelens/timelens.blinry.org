@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+passthrough "/vendor/**/*"
+
 compile "/**/*.scss" do
     filter :sass, syntax: :scss
     write item.identifier.without_ext + ".css"

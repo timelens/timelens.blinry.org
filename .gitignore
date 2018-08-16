@@ -3,3 +3,5 @@ Gemfile.lock
 /tmp
 /.sass-cache
 /videos
+
+/node_modules

@@ -43,8 +43,6 @@ timelens("#timelens", {timeline: "/timelines/6558.jpg", thumbnails: "/thumbnails
 
 ## MediaElement.js
 
-<script src="/assets/mediaelement/mediaelement-and-player.min.js"></script>
-
 <link rel="stylesheet" href="/assets/mediaelement/mediaelementplayer.min.css" />
 <script src="/assets/timelens-mediaelement.js"></script>
 
@@ -66,8 +64,6 @@ var player = new MediaElementPlayer(document.querySelector(".mediaelement"), {
 </script>
 
 ## Clappr
-
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
 
 <script type="text/javascript" src="/assets/timelens-clappr.js"></script>
 
