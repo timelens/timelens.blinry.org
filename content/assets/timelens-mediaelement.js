@@ -23,7 +23,7 @@ Object.assign(MediaElementPlayer.prototype, {
         let slider = controls.querySelector('.' + t.options.classPrefix + 'time-slider');
         slider.style.height = "40px";
         slider.style["margin-top"] = "-15px";
-        $(slider).timelens({
+        timelens(slider, {
             timeline: timeline,
             thumbnails: thumbnails
         });
