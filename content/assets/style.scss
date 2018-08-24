@@ -60,7 +60,9 @@ img.avatar {
     margin-top: 0.6em;
 }
 
-p, ul, pre {
+p,
+ul,
+pre {
     margin-bottom: 1em;
 }
 
@@ -68,7 +70,12 @@ li {
     margin-left: 1em;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-weight: 800;
 }
 
@@ -103,7 +110,8 @@ img {
     max-width: 100%;
 }
 
-button, input {
+button,
+input {
     color: $blue;
     background: transparent;
     border: 2px solid $blue;
@@ -114,7 +122,8 @@ button, input {
     margin-right: 0.5 * $spacing;
 }
 
-button:focus, input:focus {
+button:focus,
+input:focus {
     outline: none;
 }
 
@@ -139,17 +148,18 @@ code {
     font-size: 0.9em;
 }
 
-code, pre {
+code,
+pre {
     padding: 0.4em 0.6em;
     background: #f6f8fa;
 }
-
 
 pre {
     white-space: pre-wrap;
 }
 
-pre, pre code {
+pre,
+pre code {
     background: black;
     color: white;
     border-radius: 10px;
@@ -174,7 +184,8 @@ pre code {
         padding: 0 0.5em;
     }
 
-    pre, code {
+    pre,
+    code {
         color: black;
         background: #f6f8fa;
         border-radius: 0;
@@ -212,6 +223,11 @@ iframe {
     border: none;
 }
 
-.demo, .mediaelement {
+.demo,
+.mediaelement {
     margin-bottom: 1em;
+}
+
+.demo {
+    height: 200px;
 }
