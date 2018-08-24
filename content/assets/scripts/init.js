@@ -60,7 +60,7 @@ function onYouTubeIframeAPIReady() {
 document.addEventListener("DOMContentLoaded", function() {
     var nemo = document.querySelector(".timelens-standalone");
     timelens(nemo, {
-        timeline: "timelines/" + nemo.dataset.id + ".jpg",
-        thumbnails: "thumbnails/" + nemo.dataset.id + ".vtt"
+        timeline: "/timelines/" + nemo.dataset.id + ".jpg",
+        thumbnails: "/thumbnails/" + nemo.dataset.id + ".vtt"
     });
 });

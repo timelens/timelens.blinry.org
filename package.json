@@ -1,13 +1,11 @@
 {
-  "name": "timelens.io",
-  "version": "0.1.0",
-  "private": true,
-  "author": "Sebastian Morr <sebastian@morr.cc>",
-  "dependencies": {
-    "clappr": "^0.2.97",
-    "mediaelement": "^4.2.9",
-    "timelens": "file:../timelens-js",
-    "timelens-clappr": "file:../timelens-clappr",
-    "timelens-mediaelement": "file:../timelens-mediaelement"
-  }
+    "name": "timelens.io",
+    "version": "0.1.0",
+    "private": true,
+    "author": "Sebastian Morr <sebastian@morr.cc>",
+    "dependencies": {
+        "clappr": "^0.2.97",
+        "mediaelement": "^4.2.9",
+        "timelens": "0.1.0"
+    }
 }

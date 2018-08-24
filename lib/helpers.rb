@@ -1,6 +1,16 @@
 include Nanoc::Helpers::Rendering
 include Nanoc::Helpers::ChildParent
 
+def tabs
+    [
+        @items["/index.*"],
+        @items["/installation/index.*"],
+        @items["/usage/index.*"],
+        @items["/plugins/index.*"],
+        @items["/about/index.*"],
+    ]
+end
+
 def things
     blk = -> { newest_first(@items.find_all("/**/*").select{|i| i[:published]}) }
     if @items.frozen?

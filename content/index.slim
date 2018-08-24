@@ -1,65 +1,21 @@
 ---
-title: Timelens
+title: Home
 subtitle: An Open Source project for creating visual timelines and integrating them into video players
 ---
 
-img.logo src="/assets/images/timelens.svg"
-
-p.lead is an Open Source project for creating <em>visual timelines</em>:
-
-.timelens-standalone data-id="nemo" data-duration="5786"
-
-img.notes src="/assets/images/notes.png"
-
 h2 Cool, what's this?
 
-p Visual timelines show you the <em>structure</em> of a video at a glance, by visualizing its color development. Try hovering over/tapping on the image!
+p Timelens is an Open Source project for creating <em>visual timelines</em>. Try hovering over/tapping on the timeline!
 
-p First, they're pretty!
+.timelens-standalone data-id="nemo" data-duration="5786"
+img.notes src="/assets/images/notes.png"
 
-p And second, they are useful: When you integrate them into actual video players, you can use them for navigation! With a little practise, you can differentiate scenes, and skip to parts that interest you. In a talk recording, you can see when the slides change, or where the Q&A begins. We think this makes video navigation <strong>more efficient, precise, and active</strong>.
+p Visual timelines show you the <em>structure</em> of a video at a glance, by visualizing its color development. We think this makes video navigation <strong>more efficient, precise, and active</strong>.
 
-h2 What's the status?
-
-p: markdown: As of 2018, Timelens is under active development. We're building an **efficient command line tool**, which you can use to generate visual timelines yourself. See below on how to [install](#installation) and how to [use](#usage) it.
-
-p We're also going to build an <strong>easy-to-use JavaScript plugin</strong> for web-based video players, including <strong>really good documentation</strong>! Finally, we plan to integrate Timelens into <strong>media.ccc.de</strong>, the video archive of the Chaos Computer Club.
-
-h2 How can I keep in touch?
-
-p The simplest way is to subscribe to our newsletter! You'll be the first to receive news about the project, probably a few times a month:
-
-form method="post" action="http://lists.morr.cc/subscribe/timelens-newsletter"
-    input name="email" placeholder="Your email address"
-    button type="submit" Subscribe
+p You can use the <code>timelens</code> command line program to generate these timelines yourself, and choose from a range of plugins to integrate them with existing video players.
 
 p
-    | Also, you can follow us on Twitter, if that's your thing:
-    a< href="https://twitter.com/timelens_io"
-        | @timelens_io
-
-h2 Who's behind this?
-
-img.avatar src="/assets/images/avatar.png"
-
-p
-    markdown: The Timelens project (formerly known as *nordlicht*) was started by [Sebastian Morr](https://morr.cc), a computer scientist, programmer, and designer from Germany. He's enthusiastic about free licenses, food, and minimalism, and he values autonomy, creativity, and curiosity. He has attended a scientific workshop on Origami in the Caribbean, backpacked through Japan, and is drawing [algorithm assembly instructions](https://idea-instructions.com).
-
-p
-    markdown: When he stumbled over the [moviebarcode Tumblr](http://moviebarcode.tumblr.com) in 2011, he immediately wanted two things: An efficient tool for generating these "visual timelines" himself. And a really good integration into video players, so they could be used for navigation!
-
-p
-    markdown: Now, supported by the Prototype Fund, he can make that vision a reality!
-
-h2 Supporters
-
-#supporters
-    a href="https://www.bmbf.de"
-        img src="/assets/images/bmbf.svg"
-    a href="https://prototypefund.de"
-        img src="/assets/images/prototypefund.svg"
-    a href="https://okfn.de"
-        img src="/assets/images/okfde.svg"
+  a.button href="/installation/" Get started!
 
 h2 Can I see more examples?
 
@@ -75,75 +31,7 @@ p Sure! Try clicking around in the visual timelines below the videos! Click the 
     iframe src="https://www.youtube.com/embed/49mseQwFeO0"
     / The Witness
 
-h2 id="installation" Installation
+h2 How can I create my own timelines?
 
-p: markdown: If you're using **Arch Linux**, you can install the Timelens command line tool from the [AUR](https://aur.archlinux.org/packages/timelens-git/), using your AUR helper of choice, e.g.
-
-pre: code $ yaourt -S timelens-git
-
-p: markdown: For **other platforms**, there are no packages or binaries yet ([let me know](https://morr.cc/about/) if you want to help change that). But you can build Timelens yourself, here's how:
-
-h2 Building
-
-p: markdown: Timelens is written in the Rust programming language, so you'll need a working [Rust installation](https://www.rust-lang.org). On Unix-based systems, you'll probably want to run these commands to install `rustup` and `cargo` (which are like `pip` or `npm`, but for Rust):
-
-pre: code
-    |
-        $ curl -f https://sh.rustup.rs > rust.sh
-        $ sh rust.sh
-        $ source ~/.cargo/env
-
-p: markdown: There's also a single dependency: The multimedia framework *GStreamer*. To install the required components for your platform, follow [these instructions](https://github.com/sdroege/gstreamer-rs#installation).
-
-p You can then compile Timelens like this:
-
-pre: code
-    |
-        $ git clone https://github.com/timelens/timelens
-        $ cd timelens
-        $ cargo build --release
-
-p: markdown: This will create the binary `target/release/timelens`, which you can use like this:
-
-pre: code $ ./target/release/timelens video.mp4
-
-h2 id="usage" Usage
-
-p: markdown: The most basic usage is to simply give Timelens the name of a video file. Timelens will create a visual timeline from the video, using a default size of 1000x100 pixels, and the default filename `INPUT_FILE.timeline.jpg`.
-
-pre: code $ timelens video.mp4
-
-.file
-    span video.mp4.timeline.jpg
-    img src="/assets/examples/video.mp4.timeline.jpg"
-
-p You can override the filename and the timeline's size explicitly:
-
-pre: code $ timelens video.mp4 --timeline timeline.jpg -w 1000 -h 500
-
-.file
-    span timeline.jpg
-    img src="/assets/examples/timeline.jpg"
-
-p The second thing Timelens can do is creating thumbnail grids. To keep the individual files small, Timelens will often split the thumbnails into several files. It will also create a text file in the VTT format, which references the thumbnails' positions.
-
-p: markdown: Use the `--thumbnails` option to specify the name of the VTT file:
-
-pre: code $ timelens video.mp4 --thumbnails thumbnails.vtt
-
-p: markdown: For each thumbnail, the file specifies a time range and a filename, as well as the X/Y position in that file and its width and height, in the [Media Fragment](https://www.w3.org/TR/media-frags/) syntax:
-
-.file
-     span thumbnails.vtt
-     pre: code
-         =`head content/assets/examples/thumbnails.vtt`+"\n..."
-
-p Timelens will also create one or more JPEG files containing the thumbnails, which are referenced from the VTT file. Here's the first one:
-
-.file
-    span thumbnails-00.jpg
-    img src="/assets/examples/thumbnails-00.jpg"
-
-p: markdown: You can look at the complete documentation with the `--help` option, or simply by specifying no arguments:
-
-pre: code= "$ timelens\n"+`timelens --help`
+p
+  a.button href="/installation/" Get started!

@@ -42,15 +42,10 @@ img.logo {
     margin-bottom: $spacing;
 }
 
-p.lead {
-    text-align: center;
-    font-size: 1.5em;
-    line-height: 1.2em;
-}
-
 img.notes {
     width: 100%;
     margin-top: 5px;
+    margin-bottom: $spacing;
 }
 
 img.avatar {
@@ -110,21 +105,31 @@ img {
     max-width: 100%;
 }
 
+form {
+    margin-bottom: $spacing;
+}
+
 button,
-input {
+input,
+.button {
     color: $blue;
     background: transparent;
     border: 2px solid $blue;
     border-radius: 6px;
     padding: 0.5em;
     transition: all 0.2s ease;
-    margin-bottom: $spacing;
     margin-right: 0.5 * $spacing;
+    display: inline-block;
 }
 
 button:focus,
-input:focus {
+input:focus,
+.button:focus {
     outline: none;
+}
+
+a.button:hover {
+    color: white;
 }
 
 input {
@@ -133,13 +138,15 @@ input {
     margin-right: 0.5 * $spacing;
 }
 
-button {
+button,
+.button {
     background-color: $blue;
     color: white;
     cursor: pointer;
 }
 
-button:hover {
+button:hover,
+.button:hover {
     border-color: $darkblue;
     background-color: $darkblue;
 }
@@ -228,6 +235,17 @@ iframe {
     margin-bottom: 1em;
 }
 
-.demo {
-    height: 200px;
+#nav {
+    font-size: 1.5em;
+    list-style: none;
+    text-align: center;
+    li {
+        display: inline;
+    }
+    li.active {
+        font-weight: bold;
+    }
+    a {
+        color: $grey;
+    }
 }

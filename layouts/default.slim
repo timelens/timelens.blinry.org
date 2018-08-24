@@ -42,12 +42,20 @@ html lang=lang_for(@item)
     link rel="stylesheet" href="/vendor/mediaelement/build/mediaelementplayer.min.css"
     link rel="stylesheet" href="/vendor/timelens/timelens.css"
 
-    script src="/vendor/timelens/timelens.js"
     script src="/vendor/mediaelement/build/mediaelement-and-player.min.js"
     script src="/vendor/clappr/dist/clappr.min.js"
-    script src="/vendor/timelens-mediaelement/timelens-mediaement.js"
-    script src="/vendor/timelens-clappr/timelens-clappr.js"
+    script src="/vendor/timelens/timelens.js"
+
     script src="/assets/scripts/init.js"
 
   body
+    a href="/"
+      img.logo src="/assets/images/timelens.svg"
+
+    ul#nav
+      - for i in tabs
+        li class=("active" if i.path == @item.path)
+          a href=i.path
+            = i[:title]
+
     == yield

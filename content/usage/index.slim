@@ -1,0 +1,53 @@
+---
+title: Usage
+---
+
+p: markdown: The most basic usage is to simply give Timelens the name of a video file. Timelens will create a visual timeline from the video, using a default size of 1000x100 pixels, and the default filename `INPUT_FILE.timeline.jpg`.
+
+p Run this command in a terminal:
+
+pre: code $ timelens video.mp4
+
+p to create the following file:
+
+.file
+    span video.mp4.timeline.jpg
+    img src="/assets/examples/video.mp4.timeline.jpg"
+
+p You can override the filename and the timeline's size explicitly:
+
+pre: code $ timelens video.mp4 --timeline timeline.jpg -w 1000 -h 500
+
+.file
+    span timeline.jpg
+    img src="/assets/examples/timeline.jpg"
+
+p The second thing Timelens can do is creating thumbnail grids. To keep the individual files small, Timelens will often split the thumbnails into several files. It will also create a text file in the VTT format, which references the thumbnails' positions.
+
+p: markdown: Use the `--thumbnails` option to specify the name of the VTT file:
+
+pre: code $ timelens video.mp4 --thumbnails thumbnails.vtt
+
+p: markdown: For each thumbnail, the file specifies a time range and a filename, as well as the X/Y position in that file and its width and height, in the [Media Fragment](https://www.w3.org/TR/media-frags/) syntax:
+
+.file
+     span thumbnails.vtt
+     pre: code
+         =`head content/assets/examples/thumbnails.vtt`+"\n..."
+
+p Timelens will also create one or more JPEG files containing the thumbnails, which are referenced from the VTT file. Here's the first one:
+
+.file
+    span thumbnails-00.jpg
+    img src="/assets/examples/thumbnails-00.jpg"
+
+p: markdown: You can look at the complete documentation with the `--help` option, or simply by specifying no arguments:
+
+pre: code= "$ timelens\n"+`timelens --help`
+
+h2 
+    
+p Now that you have some timelines and thumbnails, let's display them on your website!
+
+p
+  a.button href="/plugins/" Install plugins
