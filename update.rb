@@ -8,7 +8,7 @@ def timelens vid, file
     end
 end
 
-nemo = "'/home/seb/library/movies/Finding Nemo/re up finding nemo.avi'"
+nemo = "videos/nemo.avi"
 
 puts "Processing nemo..."
 timelens("nemo", nemo)
@@ -38,6 +38,6 @@ timelens(id, file)
 
 puts "Running examples..."
 Dir.chdir("content/assets/examples")
-system("timelens #{nemo} --timeline video.mp4.timeline.jpg")
-system("timelens #{nemo} --timeline timeline.jpg -w 1000 -h 500")
-system("timelens #{nemo} --thumbnails thumbnails.vtt")
+system("timelens ../../../#{nemo} --timeline video.mp4.timeline.jpg")
+system("timelens ../../../#{nemo} --timeline timeline.jpg -w 1000 -h 500")
+system("timelens ../../../#{nemo} --thumbnails thumbnails.vtt")

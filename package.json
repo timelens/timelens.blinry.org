@@ -4,8 +4,8 @@
     "private": true,
     "author": "Sebastian Morr <sebastian@morr.cc>",
     "dependencies": {
-        "clappr": "^0.2.97",
+        "clappr": "^0.2.98",
         "mediaelement": "^4.2.9",
-        "timelens": "0.1.0"
+        "timelens": "^0.1.1"
     }
 }
