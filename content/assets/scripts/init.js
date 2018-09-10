@@ -58,9 +58,13 @@ function onYouTubeIframeAPIReady() {
 
 // Also, for all .timelens-standalone elements, initialize Timelens.
 document.addEventListener("DOMContentLoaded", function() {
-    var nemo = document.querySelector(".timelens-standalone");
-    timelens(nemo, {
-        timeline: "/timelines/" + nemo.dataset.id + ".jpg",
-        thumbnails: "/thumbnails/" + nemo.dataset.id + ".vtt"
+    var iframes = document.querySelectorAll("iframe");
+
+    var standalones = document.querySelectorAll(".timelens-standalone");
+    [].forEach.call(standalones, function(standalone) {
+        timelens(standalone, {
+            timeline: "/timelines/" + standalone.dataset.id + ".jpg",
+            thumbnails: "/thumbnails/" + standalone.dataset.id + ".vtt"
+        });
     });
 });

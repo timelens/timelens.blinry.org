@@ -49,13 +49,14 @@ html lang=lang_for(@item)
     script src="/assets/scripts/init.js"
 
   body
-    a href="/"
-      img.logo src="/assets/images/timelens.svg"
+    - if @item.path != "/quiz/"
+      a href="/"
+        img.logo src="/assets/images/timelens.svg"
 
-    ul#nav
-      - for i in tabs
-        li class=("active" if i.path == @item.path)
-          a href=i.path
-            = i[:title]
+      ul#nav
+        - for i in tabs
+          li class=("active" if i.path == @item.path)
+            a href=i.path
+              = i[:title]
 
     == yield

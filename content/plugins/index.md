@@ -55,7 +55,7 @@ To integrate Timelens with a video player which doesn't yet have a ready-made pl
     });
 
 <script>
-timelens("#timelens", {timeline: "/timelines/6558.jpg", thumbnails: "/thumbnails/6558.vtt"});
+timelens("#timelens", {timeline: "/timelines/talk.jpg", thumbnails: "/thumbnails/talk.vtt"});
 </script>
 
 ## MediaElement.js
@@ -74,8 +74,9 @@ Also, add a `"timelens"` entry to the features list when initializing the player
 
 The result will look like this:
 
-<video id="mediaelement" poster="https://static.media.ccc.de/media/congress/2014/6558-hd_preview.jpg" src="https://cdn.media.ccc.de/congress/2014/webm-hd/31c3-6558-de-en-Traue_keinem_Scan_den_du_nicht_selbst_gefaelscht_hast_webm-hd.webm" preload="auto" style="width: 100%; height: 100%;" data-timeline="/timelines/6558.jpg">
-<track kind="metadata" label="thumbnails" src="/thumbnails/6558.vtt">
+<video id="mediaelement" poster="/assets/images/talk-cover.png"
+src="https://cdn.media.ccc.de/events/mrmcd/mrmcd18/webm-hd/mrmcd18-162-deu-Timelens_und_die_Zukunft_der_Videonavigation_webm-hd.webm" preload="auto" style="width: 100%; height: 100%;" data-timeline="/timelines/talk.jpg">
+<track kind="metadata" label="thumbnails" src="/thumbnails/talk.vtt">
 </video>
 
 <script>
@@ -110,15 +111,16 @@ The result will look like this:
 
 <script>
     var player = new Clappr.Player({
-        source: "https://berlin-ak.ftp.media.ccc.de//congress/2014/webm-hd/31c3-6558-de-en-Traue_keinem_Scan_den_du_nicht_selbst_gefaelscht_hast_webm-hd.webm",
+        source: "https://cdn.media.ccc.de/events/mrmcd/mrmcd18/webm-hd/mrmcd18-162-deu-Timelens_und_die_Zukunft_der_Videonavigation_webm-hd.webm",
         parentId: "#clappr2",
-        poster: "https://static.media.ccc.de/media/congress/2014/6558-hd_preview.jpg",
+        poster: "/assets/images/talk-cover.png",
+        mediacontrol: {buttons: "#ccc"},
         plugins: {
             core: [TimelensPlugin]
         },
         timelens: {
-            timeline: "/timelines/6558.jpg",
-            thumbnails: "/thumbnails/6558.vtt"
+            timeline: "/timelines/talk.jpg",
+            thumbnails: "/thumbnails/talk.vtt"
         }
     });
 </script>

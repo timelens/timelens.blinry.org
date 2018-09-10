@@ -29,10 +29,10 @@ vids.each do |vid|
     timelens(vid, file)
 end
 
-id = "6558"
+id = "talk"
 file = "videos/#{id}.mp4"
 if not File.exist?(file)
-    system("wget https://cdn.media.ccc.de/congress/2014/h264-sd/31c3-6558-de-en-Traue_keinem_Scan_den_du_nicht_selbst_gefaelscht_hast_sd.mp4 -O #{file}")
+    system("wget https://cdn.media.ccc.de/events/mrmcd/mrmcd18/h264-sd/mrmcd18-162-deu-Timelens_und_die_Zukunft_der_Videonavigation_sd.mp4 -O #{file}")
 end
 timelens(id, file)
 

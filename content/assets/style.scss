@@ -74,6 +74,13 @@ h6 {
     font-weight: 800;
 }
 
+h1 {
+    font-size: 2em;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    text-align: center;
+}
+
 h2 {
     font-size: 1.5em;
     margin-top: 2em;
@@ -203,6 +210,21 @@ img {
     display: block;
 }
 
+#nav {
+    font-size: 1.5em;
+    list-style: none;
+    text-align: center;
+    li {
+        display: inline;
+    }
+    li.active {
+        font-weight: bold;
+    }
+    a {
+        color: $grey;
+    }
+}
+
 /* Timelens styles */
 
 .timelens-standalone img {
@@ -235,17 +257,20 @@ iframe {
     margin-bottom: 1em;
 }
 
-#nav {
+.solution {
     font-size: 1.5em;
-    list-style: none;
+    color: #ccc;
     text-align: center;
-    li {
-        display: inline;
-    }
-    li.active {
-        font-weight: bold;
-    }
-    a {
-        color: $grey;
-    }
+    background: #ccc;
+    padding: 0.5em;
+    margin: 1em 1em 10em 1em;
+}
+
+.solution::selection {
+    color: white;
+    background: black;
+}
+
+.spacer {
+    margin-top: 5em;
 }
