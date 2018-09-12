@@ -91,13 +91,13 @@ To add Timelens support to a *Clappr* player, prepare an empty div to hold the p
 
     <div id="clappr"></div>
 
-Then add a `TimelensPlugin` entry to the plugins list when initializing the player, and define the location of the timeline and the thumbnails file in the `timelens` parameter:
+Then add a `Timelens` entry to the plugins list when initializing the player, and define the location of the timeline and the thumbnails file in the `timelens` parameter:
 
     var player = new Clappr.Player({
         source: "/path/to/video.mp4",
         parentId: "#clappr",
         plugins: {
-            core: [TimelensPlugin]
+            core: [Timelens]
         },
         timelens: {
             timeline: "/path/to/timeline.jpg",
@@ -116,7 +116,7 @@ The result will look like this:
         poster: "/assets/images/talk-cover.png",
         mediacontrol: {buttons: "#ccc"},
         plugins: {
-            core: [TimelensPlugin]
+            core: [Timelens]
         },
         timelens: {
             timeline: "/timelines/talk.jpg",
