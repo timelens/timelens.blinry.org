@@ -23,7 +23,7 @@ vids.each do |vid|
     if not File.exist?(file)
         puts "Video not found."
         print "Running youtube-dl... "
-        system("youtube-dl -f 160 -o #{file} http://www.youtube.com/watch?v=#{vid}")
+        system("yt-dlp -f 160 -o #{file} http://www.youtube.com/watch?v=#{vid}")
     end
 
     timelens(vid, file)

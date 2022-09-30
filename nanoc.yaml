@@ -2,23 +2,23 @@ prune:
   auto_prune: true
 
 data_sources:
-  -
-    type: filesystem
+  - type: filesystem
 
 deploy:
   default:
     kind: rsync
-    dst: "morr.cc:/web/timelens.io/default"
-    options: [
-      '--group',
-      '--links',
-      '--perms',
-      '--partial',
-      '--progress',
-      '--recursive',
-      '--times',
-      '--verbose',
-      '--compress',
-      '--chmod=u=rwX,go=rX',
-      '--delete-after'
-    ]
+    dst: "blinry.org:/web/blinry.org/timelens"
+    options:
+      [
+        "--group",
+        "--links",
+        "--perms",
+        "--partial",
+        "--progress",
+        "--recursive",
+        "--times",
+        "--verbose",
+        "--compress",
+        "--chmod=u=rwX,go=rX",
+        "--delete-after",
+      ]

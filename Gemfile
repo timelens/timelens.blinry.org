@@ -2,10 +2,11 @@ source "https://rubygems.org"
 
 group :nanoc do
     gem "nanoc", "~> 4.3"
-    gem "guard-nanoc"
+    gem "nanoc-live"
     gem "adsf"
     gem "kramdown"
     gem "slim"
     gem "sass"
-    gem "coffee-script"
 end
+
+gem "webrick", "~> 1.7"

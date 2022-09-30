@@ -6,9 +6,9 @@ title: Installation
 
 If you're using **Arch Linux**, you can install the Timelens command line tool from the [AUR](https://aur.archlinux.org/packages/timelens/), using your AUR helper of choice, e.g.
 
-    $ yaourt -S timelens
+    $ yay -S timelens
 
-For **other platforms**, there are no packages or binaries yet ([let me know](https://morr.cc/about/) if you want to help change that). But you can build Timelens yourself, here's how:
+For **other platforms**, there are no packages or binaries yet ([let me know](https://blinry.org/about/) if you want to help change that). But you can build Timelens yourself, here's how:
 
 ## Building from source
 

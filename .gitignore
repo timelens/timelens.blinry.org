@@ -2,6 +2,7 @@ Gemfile.lock
 /output
 /tmp
 /.sass-cache
+/.bundle
 /videos
 
 /node_modules

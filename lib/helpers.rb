@@ -84,7 +84,7 @@ def with_tag tag
 end
 
 def domain
-    "https://timelens.io/"
+    "https://timelens.blinry.org/"
 end
 
 def box(items)

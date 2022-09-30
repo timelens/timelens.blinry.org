@@ -1,8 +1,8 @@
 {
-    "name": "timelens.io",
+    "name": "timelens website",
     "version": "0.1.0",
     "private": true,
-    "author": "Sebastian Morr <sebastian@morr.cc>",
+    "author": "blinry <mail@blinry.org>",
     "dependencies": {
         "clappr": "^0.2.100",
         "mediaelement": "^4.2.14",
