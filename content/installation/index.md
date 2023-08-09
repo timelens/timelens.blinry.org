@@ -4,6 +4,8 @@ title: Installation
 
 ## Ready-made packages
 
+Timelens is available in the [official Nix/OS repo](https://search.nixos.org/packages?channel=unstable&show=timelens&from=0&size=50&sort=relevance&type=packages&query=timelens) so you can just install it like any other package in nix.
+
 If you're using **Arch Linux**, you can install the Timelens command line tool from the [AUR](https://aur.archlinux.org/packages/timelens/), using your AUR helper of choice, e.g.
 
     $ yay -S timelens
